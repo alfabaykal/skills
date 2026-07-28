@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 170" width="420" height="170" role="img" aria-label="Baton — abstract sketch of a bread loaf">
+  <g fill="none" stroke="#c9975b" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 152 C170 158 285 157 336 149" stroke-width="2.5" opacity="0.22"/>
+    <g transform="rotate(-7 210 82)">
+      <path d="M62 82 C60 52 112 36 208 34 C306 32 358 50 359 80 C360 110 308 127 210 128 C114 129 64 112 62 82 Z" stroke-width="3" opacity="0.35" transform="translate(5 -4)"/>
+      <path d="M62 82 C60 52 112 36 208 34 C306 32 358 50 359 80 C360 110 308 127 210 128 C114 129 64 112 62 82 Z" stroke-width="3.2"/>
+      <path d="M128 50 C134 60 139 70 142 82" stroke-width="3"/>
+      <path d="M173 44 C179 55 184 66 187 79" stroke-width="3"/>
+      <path d="M218 42 C224 53 229 64 232 77" stroke-width="3"/>
+      <path d="M263 45 C269 56 274 66 277 78" stroke-width="3"/>
+      <path d="M305 52 C310 61 314 70 317 80" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
