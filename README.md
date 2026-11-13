@@ -82,6 +82,30 @@ without tests has to say why, and that reason lands in the final report — so
 | An idea too big and too foggy for one spec | `/wayfinder` first, then come back |
 | You want to drive each stage yourself | Call the chain skills directly |
 
+# Auto-implement
+
+Lets an agent run mattpocock's `implement`, which only a human can start.
+
+`implement` is closed to model invocation, so a coordinator session or a
+subagent cannot call it. `auto-implement` reads the installed `implement` file
+and follows it as written. Nothing is copied: upstream changes arrive with
+`npx skills update`.
+
+```
+/auto-implement PROJ-123
+```
+
+It adds three things:
+
+1. **One question about testing.** `implement` ends with the full test suite.
+   The agent asks once, before it writes code, whether to run the full suite or
+   only the tests the change touches. A caller who already said is not asked.
+2. **A design axis for visual work.** `/code-review` covers standards and spec.
+   A change to what a person sees also gets a design reviewer with the
+   reference and rendered screenshots.
+3. **Project rules.** When the repository has `docs/agents/implement.md`, the
+   agent reads it first, and it wins over `implement` where the two disagree.
+
 ## License
 
 [MIT](LICENSE) © Dmitrii Boiko
