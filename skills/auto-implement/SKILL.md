@@ -1,6 +1,6 @@
 ---
 name: auto-implement
-description: Use when an agent, not a human, has to implement a ticket or a spec - a coordinator session handing a ticket to an executor, a subagent told "implement X", any session asked to implement without the user typing /implement. Runs mattpocock's `implement` as written, asks once how much testing to run, and adds a design axis to the review of visual work.
+description: Use when an agent, not a human, has to implement a ticket or a spec - a coordinator session handing a ticket to an executor, a subagent told "implement X", any session asked to implement without the user typing /implement. Runs mattpocock's `implement` as written, asks once how much testing to run, checks every mechanism against the platform's guidance, and adds a design axis to the review of visual work.
 ---
 
 # Auto-implement
@@ -43,20 +43,33 @@ it once, up front:
 
 The answer changes that one step. The rest of `implement` stands.
 
-## 3. Visual work gets a third review axis
+## 3. Mechanisms go by the book
 
-`/code-review` checks standards and spec. When the change touches what a person
-sees - a screen, a component, layout, motion - add a Design axis to the same
-round: a separate reviewer that gets the diff, the design reference (a mockup,
-a board, or the existing screen you are matching) and rendered screenshots.
-It looks for deviations from the reference, clipped or overflowing text, fixed
-sizes on text, contrast below AA, and custom controls where the platform has
-its own.
+Before you choose how something works - an API, a pattern, a library, the fix
+for a bug - call `by-the-book` with the Skill tool and follow it. What it has
+you report goes into your report.
 
-Fix every finding on all three axes, then review again. Stop when a round
-comes back clean.
+`/code-review` checks standards and spec. Every change to code also gets a
+Practice axis in the same round: a separate reviewer that gets the diff and
+checks each mechanism in it against the platform's guidance, as `by-the-book`
+describes under "As a review axis". A change to documents alone needs none.
 
-## 4. Project rules
+If `by-the-book` is not installed, stop and tell whoever called you to run
+`npx skills add alfabaykal/skills`.
+
+## 4. Visual work gets a Design axis
+
+When the change touches what a person sees - a screen, a component, layout,
+motion - add a Design axis to the same round: a separate reviewer that gets
+the diff, the design reference (a mockup, a board, or the existing screen you
+are matching) and rendered screenshots. It looks for deviations from the
+reference, clipped or overflowing text, fixed sizes on text, contrast below
+AA, and custom controls where the platform has its own.
+
+Fix every finding on every axis, then review again. Stop when a round comes
+back clean.
+
+## 5. Project rules
 
 If the repository has `docs/agents/implement.md`, read it before you start and
 follow it. It holds what is true of that project only: where executors commit,
@@ -65,5 +78,6 @@ how they report, which commands run the tests. Where it contradicts
 
 ## Report
 
-End with what you built, the commit, the test runs (red, then green), each
-review round with what it found, and what is still open.
+End with what you built, the commit, each mechanism you chose with its source,
+the test runs (red, then green), each review round with what it found, and
+what is still open.

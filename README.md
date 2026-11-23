@@ -95,16 +95,61 @@ and follows it as written. Nothing is copied: upstream changes arrive with
 /auto-implement PROJ-123
 ```
 
-It adds three things:
+It adds four things:
 
 1. **One question about testing.** `implement` ends with the full test suite.
    The agent asks once, before it writes code, whether to run the full suite or
    only the tests the change touches. A caller who already said is not asked.
-2. **A design axis for visual work.** `/code-review` covers standards and spec.
-   A change to what a person sees also gets a design reviewer with the
-   reference and rendered screenshots.
-3. **Project rules.** When the repository has `docs/agents/implement.md`, the
+2. **Mechanisms by the book.** Before it chooses how something works, the agent
+   calls `by-the-book`. Every change to code also gets a Practice reviewer next
+   to standards and spec.
+3. **A design axis for visual work.** A change to what a person sees also gets
+   a design reviewer with the reference and rendered screenshots.
+4. **Project rules.** When the repository has `docs/agents/implement.md`, the
    agent reads it first, and it wins over `implement` where the two disagree.
+
+# By the book
+
+Makes an agent take the mechanism from the platform's own guidance, not the
+shortest thing that works.
+
+An agent left alone reaches for the shortcut: polling where the platform has a
+callback, a sleep loop, a hand-rolled copy of what the system provides, with a
+note to redo it "if a profile ever shows it". `by-the-book` has it read the
+primary source first, answer what the platform recommends and what bites
+people, and ask before it ships a shortcut with a known limit. Scope stays
+small: the skill decides how the asked thing works, not how much gets built.
+
+```
+/by-the-book how should the app wait for the network
+```
+
+It comes in two layers:
+
+1. **The core.** A few lines that are always in context: `core.md`, put into
+   every session and every subagent by two hooks.
+2. **The skill.** The full procedure, loaded when a mechanism is chosen or
+   reviewed. `auto-implement` calls it before code is written and as the
+   Practice axis of its review.
+
+The hooks go into `~/.claude/settings.json`, next to the ones already there:
+
+```json
+"SessionStart": [
+  {
+    "matcher": "startup|resume|clear|compact",
+    "hooks": [{ "type": "command", "command": "sh \"$HOME/.claude/skills/by-the-book/inject.sh\" SessionStart", "timeout": 5 }]
+  }
+],
+"SubagentStart": [
+  {
+    "hooks": [{ "type": "command", "command": "sh \"$HOME/.claude/skills/by-the-book/inject.sh\" SubagentStart", "timeout": 5 }]
+  }
+]
+```
+
+`SessionStart` brings the core back after each compaction too. Without the
+hooks the skill still works when called. It is just not always on.
 
 ## License
 
