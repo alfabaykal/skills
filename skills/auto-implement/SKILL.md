@@ -49,10 +49,9 @@ Before you choose how something works - an API, a pattern, a library, the fix
 for a bug - call `by-the-book` with the Skill tool and follow it. What it has
 you report goes into your report.
 
-`/code-review` checks standards and spec. Every change to code also gets a
-Practice axis in the same round: a separate reviewer that gets the diff and
-checks each mechanism in it against the platform's guidance, as `by-the-book`
-describes under "As a review axis". A change to documents alone needs none.
+`/code-review` checks standards and spec. In the same round, apply the
+review axis of `by-the-book` with a separate reviewer. That skill says when
+the axis applies and when to skip it.
 
 If `by-the-book` is not installed, stop and tell whoever called you to run
 `npx skills add alfabaykal/skills`.

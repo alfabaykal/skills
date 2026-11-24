@@ -69,18 +69,44 @@ Each failure the source warns about gets a test: cancellation, interruption,
 a dependency that fails, load. The test waits for a state or an event, never
 for time.
 
+A test is a mechanism too, and the same rule holds for it. A test does not
+wait on real time. A unit test controls what its code depends on: the clock,
+the network, the disk, another service, a system component. Give the code a
+seam for that dependency and let the test hold and release it. A test that
+needs a real dependency on purpose (an integration test) waits for its
+state, never for a pause.
+
 ## 5. Report
 
 For each mechanism: the decision, the source (URL with version or date), the
 pitfalls covered, what stayed unverified, and any question you sent up.
 
+## 6. A rule comes with its check
+
+When the work produces a rule for the project ("never X", "always Y"), the
+same change adds a check that fails the gate on a violation: a lint rule, a
+script or a test, with one fixture that must fail and one that must pass. A
+rule that only a document holds comes back after the next refactor. If no
+check can express the rule, say so in the report.
+
 ## As a review axis: Practice
+
+This axis fits any review, whoever runs it: a review skill, a reviewer
+agent, or you checking your own diff before you report.
+
+First answer one question: does this diff decide how something works, in
+the product or in a test? A rename, a move, a mechanical replacement across
+files or a change to documents alone decides nothing: skip the axis and say
+so in one line. When unsure, run it.
 
 Reviewing a diff or auditing code, ask of each mechanism: would the
 platform's documentation recommend this? A finding names the place, what is
 there now, the recommended way with its source, what the product's user
 notices, and the size of the fix. Rank findings by what the user notices.
 A workaround the project's rules or ADRs document is not a finding.
+
+A rule added to the project's rule files with no check in its gate is a
+finding. Test code is in scope: how a test waits is a mechanism.
 
 ## Signs you are about to take the shortcut
 
