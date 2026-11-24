@@ -45,16 +45,19 @@ The answer changes that one step. The rest of `implement` stands.
 
 ## 3. Mechanisms go by the book
 
-Before you choose how something works - an API, a pattern, a library, the fix
-for a bug - call `by-the-book` with the Skill tool and follow it. What it has
-you report goes into your report.
+The skills below come from the `by-the-book` plugin. Call each with the
+Skill tool by its full name and follow it.
 
-`/code-review` checks standards and spec. In the same round, apply the
-review axis of `by-the-book` with a separate reviewer. That skill says when
-the axis applies and when to skip it.
+- Before you choose how something works - an API, a pattern, a library, the
+  fix for a bug: `by-the-book:how-should-it-work`. What it has you report
+  goes into your report.
+- Before you write or fix a test: `by-the-book:will-it-pass-tomorrow`.
+- `/code-review` checks standards and spec. In the same round, a separate
+  reviewer applies `by-the-book:is-it-by-the-book`. That skill says when the
+  axis applies and when to skip it.
 
-If `by-the-book` is not installed, stop and tell whoever called you to run
-`npx skills add alfabaykal/skills`.
+If the plugin is not installed, stop and tell whoever called you to run
+`claude plugin install by-the-book --marketplace alfabaykal/by-the-book`.
 
 ## 4. Visual work gets a Design axis
 
