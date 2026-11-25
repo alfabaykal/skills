@@ -45,16 +45,22 @@ The answer changes that one step. The rest of `implement` stands.
 
 ## 3. Mechanisms go by the book
 
-The skills below come from the `by-the-book` plugin. Call each with the
-Skill tool by its full name and follow it.
+The skills below come from the `by-the-book` plugin. These are steps of this
+skill, not suggestions: call each with the Skill tool by its full name at its
+step, whether or not your brief names it, and follow it.
 
-- Before you choose how something works - an API, a pattern, a library, the
-  fix for a bug: `by-the-book:how-should-it-work`. What it has you report
-  goes into your report.
-- Before you write or fix a test: `by-the-book:will-it-pass-tomorrow`.
+- Before the first line of code: `by-the-book:how-should-it-work`. Every
+  change that decides how something works counts: an API, a pattern, a
+  library, a dependency version, a build file, a config value, the fix for a
+  bug. What it has you report goes into your report.
+- Before the first test you write or change:
+  `by-the-book:will-it-pass-tomorrow`.
 - `/code-review` checks standards and spec. In the same round, a separate
   reviewer applies `by-the-book:is-it-by-the-book`. That skill says when the
   axis applies and when to skip it.
+
+Skip a step only when the ticket has nothing for it (no test touched, for
+example), and say so in the report.
 
 If the plugin is not installed, stop and tell whoever called you to run
 `claude plugin install by-the-book --marketplace alfabaykal/by-the-book`.
@@ -68,8 +74,10 @@ are matching) and rendered screenshots. It looks for deviations from the
 reference, clipped or overflowing text, fixed sizes on text, contrast below
 AA, and custom controls where the platform has its own.
 
-Fix every finding on every axis, then review again. Stop when a round comes
-back clean.
+Fix every finding on every axis. Review again only when a fix changed
+behavior. A fix that changes only form (a name, an import, the order of
+imports, the wording of a comment) needs no new round: list it in the report.
+Stop when a round comes back clean or with form findings only, fixed.
 
 ## 5. Project rules
 
@@ -82,4 +90,12 @@ how they report, which commands run the tests. Where it contradicts
 
 End with what you built, the commit, each mechanism you chose with its source,
 the test runs (red, then green), each review round with what it found, and
-what is still open.
+what is still open. Also:
+
+- Which `by-the-book` skills you loaded and at which step. A step you skipped,
+  and why.
+- No red run before the green one: say so under what is still open, and do
+  not call the work test-first. Give the reviewers your test runs, so they see
+  it too.
+- The reviewer's "Practice differs from a project rule" section, copied as
+  written. Change nothing because of it: the owner decides.
