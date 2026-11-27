@@ -43,6 +43,9 @@ it once, up front:
 
 The answer changes that one step. The rest of `implement` stands.
 
+Before the final run, bring your work onto the current tip of the branch it
+lands on, the way the project merges. The final run tests what will land.
+
 ## 3. Mechanisms go by the book
 
 The skills below come from the `by-the-book` plugin. These are steps of this
@@ -79,7 +82,15 @@ behavior. A fix that changes only form (a name, an import, the order of
 imports, the wording of a comment) needs no new round: list it in the report.
 Stop when a round comes back clean or with form findings only, fixed.
 
-## 5. Project rules
+## 5. Fixes after acceptance
+
+When the caller sends back remarks on work that was already reviewed and
+accepted, do not start `implement` again. Make the fixes, run the tests
+they touch, and review again only by the rule above: a fix that changes
+behavior gets a new round on the axes it touches, a fix of form gets none.
+Report each remark and what you did with it.
+
+## 6. Project rules
 
 If the repository has `docs/agents/implement.md`, read it before you start and
 follow it. It holds what is true of that project only: where executors commit,
